@@ -10,3 +10,4 @@ Description: Functions to facilitate MRP estimates from sparsereg multilevel reg
  The package is a set of custom functions, but adapted for general use in the future.
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
