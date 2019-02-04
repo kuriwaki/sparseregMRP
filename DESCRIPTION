@@ -1,12 +1,12 @@
 Package: sparseregMRP
-Title: What the Package Does (One Line, Title Case)
+Title: MRP Estimates from sparsereg Regressions
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Shiro",
+           family = "Kuriwaki",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "kuriwaki@g.harvard.edu")
+Description: Functions to facilitate MRP estimates from sparsereg multilevel regressions. 
+ The package is a set of custom functions, but adapted for general use in the future.
 Encoding: UTF-8
 LazyData: true
