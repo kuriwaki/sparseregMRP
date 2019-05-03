@@ -24,5 +24,4 @@ population and the fraction of that subpopulationin the geography of interest
 size <- read_csv("https://www.shirokuriwaki.com/datasets/popsize08.csv")
 size_cell <- count_cellsize(size, popvar = pop2008, geovar = stt, eth, age, sex, inc, edu)
 
- @export
 }

@@ -86,3 +86,14 @@ scatter_mrp <- function(x, y, ggtemplate = gg0, data = mrp_df, null = global_mea
          y = labrename(muhat_name))
   gg
 }
+
+
+#' Deviance from a logit model
+#' @param y vector of the outcome that was regressed on
+#' @param xb estimates from the logit coefficient
+#' @param w survey weights if appplicable
+#'
+#' @export
+dev_logit <- function(y, xb, w = 1) {
+  -2*(sum(w*y*log(expit(xb)) + w*(1 - y)*log(1 - expit(xb))))
+}

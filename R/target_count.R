@@ -11,7 +11,7 @@
 #' size <- read_csv("https://www.shirokuriwaki.com/datasets/popsize08.csv")
 #' size_cell <- count_cellsize(size, popvar = pop2008, geovar = stt, eth, age, sex, inc, edu)
 #'
-#'  @export
+#' @export
 count_cellsize <- function(size, popvar, geovar, ...) {
   pop <- enquo(popvar)
   geo <- enquo(geovar)
