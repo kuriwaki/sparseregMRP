@@ -10,6 +10,8 @@ predict_on_cells(model, data, draws = 1000)
 \item{model}{a lm, glm, glmer, stan_glmer, or sparsereg object}
 
 \item{data}{a data frame with the appropriate predictors, output from count_cellsize}
+
+\item{draws}{number of posterior draws in stan}
 }
 \value{
 A vector of predicted values

@@ -2,7 +2,7 @@
 #'
 #' @param model a lm, glm, glmer, stan_glmer, or sparsereg object
 #' @param data a data frame with the appropriate predictors, output from count_cellsize
-#' @draws number of posterior draws in stan
+#' @param draws number of posterior draws in stan
 #'
 #' @return A vector of predicted values
 #'

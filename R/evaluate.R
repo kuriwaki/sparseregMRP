@@ -88,10 +88,20 @@ scatter_mrp <- function(x, y, ggtemplate = gg0, data = mrp_df, null = global_mea
 }
 
 
-#' Deviance from a logit model
-#' @param y vector of the outcome that was regressed on
-#' @param xb estimates from the logit coefficient
+#' Deviance from predicted values of a logit model
+#'
+#'
+#' @param y vector of the outcome that was regressed on, or the true values to predict
+#' @param xb estimates from the logit coefficient, before the link function is applied.
 #' @param w survey weights if appplicable
+#'
+#' @details The deviance without weights is computed as
+#'
+#' \textit{dev}(\widehat p)=-2 \times \sum_{i=1}^n p_i \log \widehat p_i+(1-p_i) \log(1-\widehat p_i)
+#'
+#' where
+#'
+#' \widehat{p} = \frac{\exp{Xb}}{\exp{Xb} + 1}
 #'
 #' @export
 dev_logit <- function(y, xb, w = 1) {

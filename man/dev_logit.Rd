@@ -2,17 +2,26 @@
 % Please edit documentation in R/evaluate.R
 \name{dev_logit}
 \alias{dev_logit}
-\title{Deviance from a logit model}
+\title{Deviance from predicted values of a logit model}
 \usage{
 dev_logit(y, xb, w = 1)
 }
 \arguments{
-\item{y}{vector of the outcome that was regressed on}
+\item{y}{vector of the outcome that was regressed on, or the true values to predict}
 
-\item{xb}{estimates from the logit coefficient}
+\item{xb}{estimates from the logit coefficient, before the link function is applied.}
 
 \item{w}{survey weights if appplicable}
 }
 \description{
-Deviance from a logit model
+Deviance from predicted values of a logit model
+}
+\details{
+The deviance without weights is computed as
+
+\textit{dev}(\widehat p)=-2 \times \sum_{i=1}^n p_i \log \widehat p_i+(1-p_i) \log(1-\widehat p_i)
+
+where
+
+\widehat{p} = \frac{\exp{Xb}}{\exp{Xb} + 1}
 }
