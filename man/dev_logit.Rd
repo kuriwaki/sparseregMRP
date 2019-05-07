@@ -4,12 +4,15 @@
 \alias{dev_logit}
 \title{Deviance from predicted values of a logit model}
 \usage{
-dev_logit(y, xb, w = 1)
+dev_logit(y, xb = NULL, phat = NULL, w = 1)
 }
 \arguments{
 \item{y}{vector of the outcome that was regressed on, or the true values to predict}
 
-\item{xb}{estimates from the logit coefficient, before the link function is applied.}
+\item{xb}{estimates from the logit model, before the link function is applied.}
+
+\item{phat}{estimates from the logit model, after link function is applied.
+Only either \code{xb} or \code{phat} is necessary.}
 
 \item{w}{survey weights if appplicable}
 }
@@ -17,11 +20,15 @@ dev_logit(y, xb, w = 1)
 Deviance from predicted values of a logit model
 }
 \details{
-The deviance without weights is computed as
+The deviance without weights, \eqn{dev(\hat p)} for target \eqn{y} is computed as
 
-\textit{dev}(\widehat p)=-2 \times \sum_{i=1}^n p_i \log \widehat p_i+(1-p_i) \log(1-\widehat p_i)
+\deqn{-2 \times \sum_{i=1}^n y_i \log(\hat{p_i}) + (1 - y_i) \log(1 - \hat{p_i})}
 
 where
 
-\widehat{p} = \frac{\exp{Xb}}{\exp{Xb} + 1}
+\deqn{\hat{p} = \frac{\exp{X\beta}}{\exp{X\beta} + 1}}.
+
+With weights, this simply becomes
+
+ \deqn{-2 \times \sum_{i=1}^n w_i y_i \log(\hat{p_i}) + w_i (1 - y_i) \log(1 - \hat{p_i})}
 }

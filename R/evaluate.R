@@ -92,18 +92,32 @@ scatter_mrp <- function(x, y, ggtemplate = gg0, data = mrp_df, null = global_mea
 #'
 #'
 #' @param y vector of the outcome that was regressed on, or the true values to predict
-#' @param xb estimates from the logit coefficient, before the link function is applied.
+#' @param xb estimates from the logit model, before the link function is applied.
+#' @param phat estimates from the logit model, after link function is applied.
+#'   Only either \code{xb} or \code{phat} is necessary.
 #' @param w survey weights if appplicable
 #'
-#' @details The deviance without weights is computed as
+#' @details The deviance without weights, \eqn{dev(\hat p)} for target \eqn{y} is computed as
 #'
-#' \textit{dev}(\widehat p)=-2 \times \sum_{i=1}^n p_i \log \widehat p_i+(1-p_i) \log(1-\widehat p_i)
+#' \deqn{-2 \times \sum_{i=1}^n y_i \log(\hat{p_i}) + (1 - y_i) \log(1 - \hat{p_i})}
 #'
 #' where
 #'
-#' \widehat{p} = \frac{\exp{Xb}}{\exp{Xb} + 1}
+#' \deqn{\hat{p} = \frac{\exp{X\beta}}{\exp{X\beta} + 1}}.
+#'
+#' With weights, this simply becomes
+#'
+#'  \deqn{-2 \times \sum_{i=1}^n w_i y_i \log(\hat{p_i}) + w_i (1 - y_i) \log(1 - \hat{p_i})}
+#'
 #'
 #' @export
-dev_logit <- function(y, xb, w = 1) {
-  -2*(sum(w*y*log(expit(xb)) + w*(1 - y)*log(1 - expit(xb))))
+dev_logit <- function(y, xb = NULL, phat = NULL, w = 1) {
+  if (!is.null(xb) & !is.null(phat))
+    stop("Only specify either xb or phat")
+
+  if (!is.null(xb))
+    -2*(sum(w*y*log(expit(xb)) + w*(1 - y)*log(1 - expit(xb))))
+
+  if (!is.null(phat))
+    -2*(sum(w*y*log(phat) + w*(1 - y)*log(1 - phat)))
 }
