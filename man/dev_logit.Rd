@@ -26,7 +26,7 @@ The deviance without weights, \eqn{dev(\hat p)} for target \eqn{y} is computed a
 
 where
 
-\deqn{\hat{p} = \frac{\exp{X\beta}}{\exp{X\beta} + 1}}.
+\deqn{\hat{p} = \frac{\exp{(X\beta)}}{\exp{(X\beta)} + 1}}.
 
 With weights, this simply becomes
 
