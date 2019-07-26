@@ -103,7 +103,7 @@ scatter_mrp <- function(x, y, ggtemplate = gg0, data = mrp_df, null = global_mea
 #'
 #' where
 #'
-#' \deqn{\hat{p} = \frac{\exp{X\beta}}{\exp{X\beta} + 1}}.
+#' \deqn{\hat{p} = \frac{\exp{(X\beta)}}{\exp{(X\beta)} + 1}}.
 #'
 #' With weights, this simply becomes
 #'
@@ -112,7 +112,7 @@ scatter_mrp <- function(x, y, ggtemplate = gg0, data = mrp_df, null = global_mea
 #'
 #' @export
 dev_logit <- function(y, xb = NULL, phat = NULL, w = 1) {
-  if (!is.null(xb) & !is.null(phat))
+  if (!is.null(xb) & !is.null(phat) | is.null(xb) & is.null(phat))
     stop("Only specify either xb or phat")
 
   if (!is.null(xb))
