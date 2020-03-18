@@ -77,10 +77,12 @@ simulate_mrp_data <- function(n) {
 
   true.popn <- as_tibble(data.frame(poststrat[, 1:5], cat.pref = rep(NA, prod(J))))
   for (j in 1:prod(J)) {
-    true.popn$cat.pref[j] <- invlogit(coef_male[poststrat[j, 1] + 1] +
-                                        coef_eth[poststrat[j, 2]] + coef_age[poststrat[j, 3]] +
-                                        coef_income[poststrat[j, 4]] + coef_state[poststrat[j, 5]] +
-                                        coef_age_male[poststrat[j, 1] + 1, poststrat[j, 3]])
+    true.popn$cat.pref[j] <- plogis(coef_male[poststrat[j, 1] + 1] +
+                                      coef_eth[poststrat[j, 2]] +
+                                      coef_age[poststrat[j, 3]] +
+                                      coef_income[poststrat[j, 4]] +
+                                      coef_state[poststrat[j, 5]] +
+                                      coef_age_male[poststrat[j, 1] + 1, poststrat[j, 3]])
   }
 
 
