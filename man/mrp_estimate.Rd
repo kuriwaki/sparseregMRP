@@ -4,8 +4,14 @@
 \alias{mrp_estimate}
 \title{wrapper function for MRP estimates}
 \usage{
-mrp_estimate(model, est_name, cells = size_cell, geovar = stt,
-  fracvar = frac_of_state, return_vec = FALSE)
+mrp_estimate(
+  model,
+  est_name,
+  cells = size_cell,
+  geovar = stt,
+  fracvar = frac_of_state,
+  return_vec = FALSE
+)
 }
 \arguments{
 \item{model}{a lm, glm, glmer, or sparsereg object}

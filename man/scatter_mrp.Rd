@@ -4,8 +4,7 @@
 \alias{scatter_mrp}
 \title{Diagnostic graphic}
 \usage{
-scatter_mrp(x, y, ggtemplate = gg0, data = mrp_df,
-  null = global_mean)
+scatter_mrp(x, y, ggtemplate = gg0, data = mrp_df, null = global_mean)
 }
 \arguments{
 \item{x}{the xaxis variable (no quotes)}
